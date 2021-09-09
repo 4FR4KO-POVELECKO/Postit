@@ -7,9 +7,9 @@ from .models import Note, Category
 class NoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Note
-        fields = ('id', 'title', 'text', 'category')
+        fields = ('id', 'title', 'text', 'category', 'author')
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ('id', 'title')
+        fields = ('id', 'title', 'author')

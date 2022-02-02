@@ -1,0 +1,5 @@
+django
+django-environ
+djangorestframework
+djangorestframework-simplejwt
+djoser

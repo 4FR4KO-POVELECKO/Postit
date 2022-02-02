@@ -1,7 +1,7 @@
 from rest_framework import generics
-from .models import Note, Category
-from .serializers import NoteSerializer, CategorySerializer
-from .permissions import AuthorPermissions
+from notes.models import Note, Category
+from notes.serializers import NoteSerializer, CategorySerializer
+from notes.permissions import AuthorPermissions
 
 
 class NoteList(AuthorPermissions, generics.ListAPIView):

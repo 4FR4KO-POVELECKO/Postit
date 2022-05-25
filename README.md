@@ -1,1 +1,2 @@
-# Post it note
+# Postit
+Trello REST API clone

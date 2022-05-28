@@ -1,11 +1,8 @@
 from django.urls import path
-from .views import NoteList, NoteDetail
-from .views import CategoryList, CategoryDetail
+from .views import BoardListCreateView, BoardDetailUpdateDestroyView
 
 
 urlpatterns = [
-    path('notes/', NoteList.as_view()),
-    path('notes/<int:pk>/', NoteDetail.as_view()),
-    path('categories/', CategoryList.as_view()),
-    path('categories/<int:pk>/', CategoryDetail.as_view()),
+    path('boards/', BoardListCreateView.as_view()),
+    path('board/<pk>/', BoardDetailUpdateDestroyView.as_view()),
 ]

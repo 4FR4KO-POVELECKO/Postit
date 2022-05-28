@@ -1,8 +1,11 @@
 from django.contrib import admin
-from .models import Note, Category
+from .models import Board, Column, Card, Tag, Check, CheckList, Comment
 
-class NoteAdmin(admin.ModelAdmin):
-    pass
 
-admin.site.register(Note, NoteAdmin)
-admin.site.register(Category, NoteAdmin)
+admin.site.register(Board)
+admin.site.register(Column)
+admin.site.register(Card)
+admin.site.register(Tag)
+admin.site.register(Check)
+admin.site.register(CheckList)
+admin.site.register(Comment)

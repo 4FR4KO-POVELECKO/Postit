@@ -1,15 +1,48 @@
-from django.db import models
-from django.db.models import fields
 from rest_framework import serializers
-from .models import Note, Category
+from .models import Board, Column, Card, Tag, Check, CheckList, Comment
 
 
-class NoteSerializer(serializers.ModelSerializer):
+class BoardSerializer(serializers.ModelSerializer):
+    author = serializers.HiddenField(
+        default=serializers.CurrentUserDefault(),
+    )
+
     class Meta:
-        model = Note
-        fields = ('id', 'title', 'text', 'category', 'author')
+        model = Board
+        fields = '__all__'
 
-class CategorySerializer(serializers.ModelSerializer):
+
+class ColumnSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Category
-        fields = ('id', 'title', 'author')
+        model = Column
+        fields = '__all__'
+
+
+class CardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Card
+        fields = '__all__'
+
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = '__all__'
+
+
+class CheckSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Check
+        fields = '__all__'
+
+
+class CheckListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CheckList
+        fields = '__all__'
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = '__all__'

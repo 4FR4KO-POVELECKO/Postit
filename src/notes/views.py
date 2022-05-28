@@ -1,24 +1,19 @@
-from rest_framework import generics
-from notes.models import Note, Category
-from notes.serializers import NoteSerializer, CategorySerializer
-from notes.permissions import AuthorPermissions
+from rest_framework import generics, permissions
+from notes.models import Board
+from notes.serializers import BoardSerializer
 
 
-class NoteList(AuthorPermissions, generics.ListAPIView):
-    queryset = Note.objects.all()
-    serializer_class = NoteSerializer
+class BoardListCreateView(generics.ListCreateAPIView):
+    model = Board
+    serializer_class = BoardSerializer
+
+    def get_queryset(self):
+        return Board.objects.filter(author=self.request.user)
 
 
-class NoteDetail(AuthorPermissions, generics.RetrieveUpdateDestroyAPIView):
-    queryset = Note.objects.all()
-    serializer_class = NoteSerializer
+class BoardDetailUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = BoardSerializer
 
-
-class CategoryList(AuthorPermissions, generics.ListCreateAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-
-
-class CategoryDetail(AuthorPermissions, generics.RetrieveUpdateDestroyAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
+    def get_queryset(self):
+        return Board.objects.filter(author=self.request.user)

@@ -3,3 +3,4 @@ django-environ
 djangorestframework
 djangorestframework-simplejwt
 djoser
+psycopg2
